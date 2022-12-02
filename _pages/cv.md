@@ -1,8 +1,10 @@
 ---
-layout: page
+layout: redirected
+permalink: /cv/
+redirect_to: https://www.google.com/
 permalink: /cv/
 title: cv
+description: 
 nav: true
-nav_order: 4
-redirect: /assets/pdf/CV_Yordan_Tsvetkov.pdf
+nav_order: 5
 ---
