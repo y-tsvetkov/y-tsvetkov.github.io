@@ -58,7 +58,7 @@ It's about 45% or 158 g lighter than [OpenQuadruped, the best fully 3D-printed d
 * For the knee joint, using 4mm width M3 belts instead of the more common 6mm M2 belts (as with the design I compared against) enables the servo pulley (5) to be mounted under the servo hub instead of over it. This reduces design size and moves the point at which force is applied closer to the base of the shaft, reducing bending stresses.
 * The tibia servo motor is integrated as a stress-bearing member, improving leg resistance to side forces.
 * The cavities on the inner side of the tibia halves (8-9) add perimeters of material away from the neutral axis, increasing the second moment of area and thus improving stiffness for about the same mass as a part with uniform infill.
-
+* I resorted to directly threading the screws in plastic rather than heat set inserts/captive nuts since they'd add quite a bit of weight while [not being that much stronger.](https://youtu.be/2wRc1KbEAU8?t=522)
 ## Grabby leg
 
 Now comes the fun part. My thinking for how to make the leg grabby was centered on adding a second end effector that can move in 3D relative to the EE of the leg. I was struggling to find a design that could be light while still allowing for 3D movement, until one faithful night of substituting sleep with YouTube I came across [this video of a crab eating noodles](https://www.youtube.com/watch?v=CcYRXgKgxnw). You can notice how when it grabs a noodle, only the upper claw moves, and the lower claw is just a static extension of the lower limb. If there is a 1-DoF wrist before the claw and we give the moving pincer another DoF, that's 3!
