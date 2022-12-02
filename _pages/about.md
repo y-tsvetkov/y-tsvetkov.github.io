@@ -19,7 +19,7 @@ I am Yordan, a third-year undergraduate student at the University of Edinburgh, 
 
 My research output is currently centered around achieving more with less in the field of legged robotics. In my first research project (2020-2021), I developed a quadruped robot capable of rough-terrain walking using neural networks with 8-12 neurons. In my [most recent publication](https://arxiv.org/abs/2207.08765) at [IROS 2022](https://ras.papercept.net/conferences/conferences/IROS22/program/IROS22_ContentListWeb_2.html#mob-4_02), I presented a design for a four-legged robot capable of manipulation with 1 or 2 limbs while costing 5 times less than a conventional arm while minimally impacting its moment of inertia.
 
-You can find my CV [here](y-tsvetkov.github.io/assets/pdf/CV_Yordan_Tsvetkov.pdf) and in the CV tab.
+You can find my CV [here](/assets/pdf/CV_Yordan_Tsvetkov.pdf) and in the CV tab.
 
 Aside from robotics, I enjoy running, scale modelling, animation and playing the guitar, albeit poorly.
 
