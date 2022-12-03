@@ -7,9 +7,9 @@ importance: 2
 category: research
 ---
 
-This project was done back in 2019-2020 as part of a national competition. The hardware is a bit lacking, but the software and results were interesting enough to warrant a writeup.
+This project was done back in 2019-2020 as part of a national competition. The hardware could be improved, but the software and results were interesting enough to warrant a writeup.
 
-TL;DR: you can get a robot to walk fairly robustly with tiny periodic networks. 
+TL;DR: you can get a robot to walk fairly robustly with periodic neural networks about 100x smaller than their non-periodic eqivalents. 
 
 ## Inspiration
 The idea behind the neural network architecture comes from two biological concepts, which suggest something very interesting: walking can be expressed as a low-dimensional sum of periodic signals.
@@ -102,12 +102,12 @@ For most of them, the idea came from this paper by [Tan et al.](https://arxiv.or
 During training, I was running 6 parallel simulations using `multiprocessing.Pool`, 1 for each core of my laptop. It took between 1000-2000 generations to create working gaits, which was about a night of training on my Acer Aspire 7.
 ### Sim Results
 
-The robot managed to learn a perturbation resistant rough terrain gait. A fun little emerging behaviour is it stopping and taking half a step backwards if stuck on an obstacle it can't cross:
+The robot managed to learn a perturbation resistant rough terrain gait. A fun little emerging behaviour is it stopping and taking half a step backwards if stuck on an obstacle it can't cross. Here the network uses just 8 neurons:
 <iframe width="775" height="436" src="https://www.youtube.com/embed/8t46JD0eP2E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <iframe width="775" height="436" src="https://www.youtube.com/embed/ZB11xuW3Y5A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Adding the yaw as an input even allowed the robot to do slight corrections to its course:
+Adding the yaw as an input and bumping the neuron count to 12 even allowed the robot to do slight corrections to its course:
 <iframe width="775" height="436" src="https://www.youtube.com/embed/qXE2g7E2N9s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ## Hardware
 <div class="row">
@@ -135,6 +135,6 @@ The custom PDB is a pretty standard board for distributing power, aside from one
 
 I plugged the weights and biases of the rough-terrain policy in an Arduino implementation of the net. The code ran quickly enough to match the PyBullet step frequency (240 Hz), which is important as simulation-trained NNs are very sensitive to latency. Here's the end result deployed on the robot:
 <iframe width="775" height="436" src="https://www.youtube.com/embed/0eE_ecmASUU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
- The controller showed a pretty funny case of overfitting - since the simulation spawned the robot slightly above the ground each time, it learned to somehow use the downward acceleration as a signal to start walking. This meant I had to give it a bit of velocity downwards to do so, but it still walked fine otherwise, for something with no sim-to-real adjustments.
+ The controller showed a pretty funny case of overfitting - since the simulation spawned the robot slightly above the ground each time, it learned to somehow use the downward acceleration as a signal to start walking. This meant I had to give it a bit of velocity downwards to do so, but it still walked fine otherwise, for something with no sim-to-real adjustments. For comparison with the state of the art back then, [a conventional neural netwrork needs 2 hidden layers of 125 and 89 neurons respectively, and that's _after hyperparameter optimisation_](https://arxiv.org/abs/1804.10332). The policy you are seeing here used 8.
 ## What's next
 Nothing right now, as this was done a while ago. The robot lived a fulfiling life entertaining house guests until it was scavenged for its electronic components for various other bots. As for the sine NNs, it would be good to further explore what they can do. Maybe at some point in the future.
