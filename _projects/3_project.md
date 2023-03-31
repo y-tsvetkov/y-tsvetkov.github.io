@@ -24,4 +24,7 @@ The renders were a reference for getting it painted eventually. For design refer
 It's nearly all M2x8 screws with the exception of the shoulder joint, which is M3 for just a bit more holding power. It's also parametric - you can adjust its scale, clearance (for where parts fit together) and screw holes, so you can make it as big/small as you want or adjust it to fit your 3D-printer's specs.
 
 It was printed on an Ultimaker 3 in my local makerspace. Loose belts and underextrusion aside, it's quite fun and surprisingly durable (it survived, about 4-5 falls in the last month, with the exception of the antenna). I'd love to print it in SLA to see if the joints would still hold up.
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1936b4df06a06ca1f2d6d5f07e9150a03c93d86a
