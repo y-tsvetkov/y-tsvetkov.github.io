@@ -1,0 +1,3 @@
+- CD into folder, go 'bundle exec jekyll serve' to see it locally!
+- to do stuff like adjust the site visuals, you might want to adjust _base.scss.
+	- to adjust the width in grid of the project in the thumbnail (referred to as 'card in here), adjust width in the 'grid-sizer, grid item{' block ( around line 450)
