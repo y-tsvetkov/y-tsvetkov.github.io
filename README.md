@@ -1,1 +1,1 @@
-# Personal site. Used the excellent [al-folio](https://github.com/alshedivat/al-folio/) template!
+Personal site. Modified extensively from the [al-folio](https://github.com/alshedivat/al-folio/) template!
