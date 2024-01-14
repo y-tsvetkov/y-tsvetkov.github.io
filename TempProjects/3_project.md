@@ -4,42 +4,70 @@ title: Anemone
 description: Soft robot for human-robot performance
 img: assets/img/anemone_thumb.jpg
 importance: 2
-category: research
+category: work
 ---
 
+Anemone is a soft, interaction-safe robot built for Edinburgh Futures Institute's Between Two Waters - a thought-provoking dance performance about the relationship between humans and machines. It features an innovative continuum manipulator design that can be made many times faster and cheaper than existing ones. The robot performed a 13-minute dance with Scottish Ballet dancer Madelline Squire. I handled the design, manufacture and programming of the robot, successfully delivering it in a month in parallel with my studies.
 
-## Inspiration
-The Edinburgh Futures Institute tasked our team at Konpanion to prepare a human-robot performance. My role was to prepare the design of the tentacles according to the requirements of the design team. We were given a budget of £5000 to prepare everything, with a budget of £1000 having been assigned for the robot itself. 
+## Backstory
+The robot was conceptualised in a discussion with the design team, consisting of members from Konpanion. They wanted to portray the hope for humans and machines to coexist symbiotically by using the visual language of the sea anemone, and the way it has formed a beneficial relationship with the clownfish.
+
+We settled on a platform with multiple tentacles, that would hang above the dancer. I had to build 10 tentacles of 1.5m each, on a limited budget (£100 per tentacle), limited manufacturing capabilities (1 3D printer available midnight-8am) and limited time (1 month).
+
+The biggest challenge in this design would be the flexible manipulator body itself, as the part that would take the longest to manufacture. I began with looking at existing designs, and determining if any of them could be adapted for our uses, but considering my constraints, none of them were suitable:
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/tentacle_problems.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+Instead of printing the tentacle segments, I settled on shaping a pool noodle using 3D-printed tools, saving kilograms of filament and days in manufacturing time. I designed a parametric cutting tool to easily create horisontal, vertical and helical cuts while maintaining high rigidity for minimal material cost:
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/parametric_tool.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
+This tool delivered clean cuts to the tentacle segments:
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/pool_noodle_idea.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 
-## The requirements
-As we 
-The tentacle 
-* It should be around 1.5m in length;
-* It should s
-* As 
+The end result is a tentacle body with extremely low cost (£2 per manipulator), low manufacturing time (1 hr per tentacle) and very high degree of customisability. One can very easily make a tentacle with a different radius and length, and even adjust the stiffness along the length of the tentacle using horisontal cuts to obtain a particular behaviour from it.
 
-We were also constrained by the fact we could use a single 3D printer in terms 
+With this out of the way, I designed the actuation module to interact with the tentacle. My main concerns here were the functionality (actuating the manipulator), as short manufacturing time as possible and the ease of assembly and disassembly. WHAT IF SERVOS ARE QUIETER? To reduce space as much as possible, I took advantage of the servo motor's 180 degree ranges, and made the winches overlap, resulting in a smaller footprint.
 
-## The idea
-I began with checking out how does the average animatronic tentacle work online. The majority of them were made using some sort of cable guides (laser-cut or 3D printed) strung of a stiff bicycle brake cable. These designs, although working well for individual, short-range tentacles, they won't do for our situation. The design folks also really didn't like that, if covered by a latex 'sock', the tentacle would resemble a robot from the 50s rather than a surreal organic life form. 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/manipulator_base.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
-Considering all that, I had to look for an alternative. Surely there is a sort of extruded, flexible cylinder with a hole, that's widely sold? It just feels like something I've seen before...
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/manipulator_tip.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
-I found my answer on my lunch break - there was some construction work going, and on their scaffolding they had some padding that was exactly the thing that I was looking for. 
+In terms of electronics, I considered a wall adapter with a power supply, but I found it would not supply enough power to guarantee the servos can all move at the same time. I settled on using multiple Li-Po batteries, making sure their capacities could support movement for the whole 15 minutes.
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/pipeline_diagam.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
-## The design
+As the art team was familiar with Blender, I prepared a tentacle rig, and a script that extracs the endpoints of each tentacle and plugs them into an IK solving script.
 
-## Hardware
-
-## Electronics
-
-## Software
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/pipeline_diagam.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 ## Did it work?
-After a night of sleeping on the floor under the tentacle ( the pool noodles turned out to be really good at keeping the heat around me), we got the tentacle going. 
-
-You can watch the whole thing [here](https://efi.ed.ac.uk/event/edinburgh-futures-conversations-between-two-waters-a-performance-2/). 
-
-## What's next
-If I had more time/budget, I would've changed the fishing line cables for steel ones, and probably use a DC motor + encoder combo instead of servos, as unlimited rotation would allow for a small-diameter winch
+It took a lot of concentrated hard work within this 1 month, but we managed to deliver the project. You can watch the performance [here](https://efi.ed.ac.uk/event/edinburgh-futures-conversations-between-two-waters-a-performance-2/).
