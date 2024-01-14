@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Putting grippers on legs and seeing what happens
-description: Overview of my IROS 2022 paper about a quadruped robot capable of manipulation with its legs
+title: IROS 2022 paper
+description: A Novel Design and Evaluation of a Dactylus-Equipped Quadruped Robot for Mobile Manipulation
 img: assets/img/bot_overview.png
 importance: 1
 category: research
@@ -14,16 +14,16 @@ category: research
 </div>
 
 
-Something that's been bothering me about four-legged robots for a while now is how can we make them useful. Many quadrupeds are marketed for inspection tasks, which a drone could likely do just as well. One thing a legged bot can do better than a drone though is environmental interaction - pushing buttons, pulling levers, carrying objects etc. For this task they are usually given arm payloads with grippers, which are relatively easy to control. However, these arms take up space and payload capacity, not to mention often costing as much as the robot itself.
+Something that's been bothering me about four-legged robots for a while now is how can we make them useful. Many quadrupeds are marketed for inspection tasks, which a drone could likely do just as well. One thing a legged bot can do better than a drone though is environmental interaction - pushing buttons, pulling levers, carrying objects etc. For this task they are usually given arm payloads with grippers, which take up space and payload capacity, not to mention often costing as much as the robot itself.
 
-Gut feeling and armchair engineering aside, the shortcomings of arms and a need for lighter and cheaper manipulation are starting to become apparent in practice. For example, in the [AIRA 2022](https://www.aira-challenge.com/) challenge, which featured navigation and locomotion tasks for legged robots, teams needed to swap between SLAM payloads and arms to complete all required tasks. Although that's fine for a challenge, in real-world deployment far away from an operator you can't change payloads. In his [ICRA 2022 keynote talk](https://www.youtube.com/watch?v=abdLIFOzdRo), Marco Hutter (founder of ANYbotics) also brought up manipulation if we want practical quadrupeds.
+The shortcomings of arms and a need for lighter and cheaper manipulation are starting to become apparent in practice. For example, in the [AIRA 2022](https://www.aira-challenge.com/) challenge, which featured navigation and locomotion tasks for legged robots, teams needed to swap between SLAM payloads and arms to complete all required tasks. Although this is fine for an academic environment, in real-world deployment far away from an operator you can't change payloads. In his [ICRA 2022 keynote talk](https://www.youtube.com/watch?v=abdLIFOzdRo), Marco Hutter (founder of ANYbotics) also brought up manipulation if we want practical quadrupeds.
 
-Another thing of note is the [recent interest and progress in the field of two-limbed manipulation](https://www.science.org/doi/10.1126/science.aat8414). A second arm is very useful when it comes to carrying big objects or providing support, like holding a bottle with one hand while screwing the cap on with the other, and some very smart people have been [devising ways to take advantage of 2 arms](https://arxiv.org/abs/2208.10552) (that's the IROS 2022 Best Paper winner BTW). It might not be too early to consider having 2 grippers on a quadruped to improve manipulation. Just sticking 2 arms won't cut it - [Spot has a max payload of 14 kg](https://dev.bostondynamics.com/docs/payload/payload_configuration_requirements) and [2 Spot Arms would weigh 16 kg in total](https://www.bostondynamics.com/sites/default/files/inline-files/spot-arm.pdf), so a dual-armed Spot could only be useful if your application involves carrying [at least 122](https://www.uu.edu/dept/physics/scienceguys/2000July.cfm) helium balloons.
+Another thing of note is the [recent interest and progress in the field of two-limbed manipulation](https://www.science.org/doi/10.1126/science.aat8414). A second arm is very useful when it comes to carrying big objects or providing support, like holding a bottle with one hand while screwing the cap on with the other, and some very smart people have been [devising ways to take advantage of 2 arms](https://arxiv.org/abs/2208.10552) (that's also the IROS 2022 Best Paper). It might not be too early to consider having 2 grippers on a quadruped to improve manipulation. Just sticking 2 arms won't cut it - [Spot has a max payload of 14 kg](https://dev.bostondynamics.com/docs/payload/payload_configuration_requirements) and [2 Spot Arms would weigh 16 kg in total](https://www.bostondynamics.com/sites/default/files/inline-files/spot-arm.pdf), so a dual-armed Spot could only be useful if your application involves carrying [at least 122](https://www.uu.edu/dept/physics/scienceguys/2000July.cfm) helium balloons.
 
 ## The idea
 So, what can we do about it? My thinking went something like this: on a quadruped, we already have 4 legs designed to be both dynamic and precise. Those legs have 3 motors each, capable of carrying a whole body. We are only 4 DoFs away from an arm + gripper, and these DoFs can have smaller and cheaper motors since the leg motors are the ones doing the heavy lifting (_ba-dum tss_).
 
-In this case, _what if we put some grippers on the front legs for one- and two-limbed manipulation?_
+In this case, _can we put some grippers on the front legs for one- and two-limbed manipulation?_
 
 To see how far could this idea go, I made a small-scale quadruped robot with 3-DoF manipulators on its front legs and normal hind legs. 
  
@@ -40,7 +40,7 @@ To see how far could this idea go, I made a small-scale quadruped robot with 3-D
 
 ## Conventional leg
 
-To get to a grabby leg, we need a non-grabby leg first. Such a leg would need to be light, stiff and the knee should bend both ways to easily grab objects from the ground once it gets a manipulator (so, no four-bar designs like Stanford Pupper). For manufacturing, I didn't have access to a CNC/laser cutter due to the pandemic, so 3D-printing was my only option. For actuation, I settled on the [Gobilda 2000 Torque](https://www.gobilda.com/2000-series-dual-mode-servo-25-2-torque/) since they have sufficient torque and a range of 300°, allowing for the double-bending knee. 2 such motors in the knees should comfortably lift 2 kg from 15 cm away, which was the projected worst case for the mass of a body + 2 legs. Considering the motors, I had the leg sections to be longer than 10 cm, just to not test the motor limits too much.
+To get to a manipulation-capable leg, we need a normal leg first. Such a leg would need to be light, stiff and the knee should bend both ways to easily grab objects from the ground once it gets a manipulator, therefore I can't use a four-bar leg design like in Stanford Pupper. For manufacturing, I only had access to a 3D-printer. For actuation, I settled on the [Gobilda 2000 Torque](https://www.gobilda.com/2000-series-dual-mode-servo-25-2-torque/) since they have sufficient torque and a range of 300°, allowing for the double-bending knee. 2 such motors in the knees should comfortably lift 2 kg from 15 cm away, which was the projected worst case for the mass of a body + 2 legs. Considering the motors, I had the leg sections to be longer than 10 cm, just to not test the motor limits too much.
 
 With the design specs out of the way, I ended up with a belt-driven leg:
 
@@ -61,11 +61,11 @@ It's about 45% or 158 g lighter than [OpenQuadruped, the best fully 3D-printed d
 * The cavities on the inner side of the tibia halves (8-9) add perimeters of material away from the neutral axis, increasing the second moment of area and thus improving stiffness for about the same mass as a part with uniform infill.
 * I resorted to directly threading the screws in plastic rather than heat set inserts/captive nuts since they'd add quite a bit of weight while [not being that much stronger.](https://youtu.be/2wRc1KbEAU8?t=522)
 
-## Grabby leg
+## Manipulation-capable leg
 
-Now comes the fun part. My thinking for how to make the leg grabby was centered on adding a second end effector that can move in 3D relative to the EE of the leg. The idea behind the configuration is probably best demonstrated by [this video of a crab eating noodles](https://www.youtube.com/watch?v=CcYRXgKgxnw). You can notice how when it grabs a noodle, only the upper pincer moves, and the lower pincer is just a static extension of the lower limb. If there is a 1-DoF wrist before the claw and we give the moving pincer another DoF, that's 3 - enough to have the second end effector move in 3D-space, relative to the leg tip. 
+My thinking for how to make the leg grabby was centered on adding a second end effector that can move in 3D relative to the EE of the leg. The idea behind the configuration is probably best demonstrated by [this video of a crab eating noodles](https://www.youtube.com/watch?v=CcYRXgKgxnw). You can notice how when it grabs a noodle, only the upper pincer moves, and the lower pincer is just a static extension of the lower limb. If there is a 1-DoF wrist before the claw and we give the moving pincer another DoF, that's 3 - enough to have the second end effector move in 3D-space, relative to the leg tip. 
 
-With this out of the way, here's the finalised leg (drumroll please):
+With this out of the way, here's the finalised leg:
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -122,7 +122,7 @@ The MoI of the grabby leg is higher than the non-grabby one, which is expected. 
     Again, 'dactylus' is 'pincer', 'sagittal Moi' means 'how hard is it to swing the leg forwards/backwards around the femur servo axis'. And again, sorry for the Latin.
 </div>
 
-The majority of the increase comes just from the wrist servo! MoI depends on the square of the distance from the axis around which you measure it, hence why the femur assembly, with its center of mass close to the axis, is not that rotationally heavy. The wrist servo is about 15 g (a fair amount of weight at this scale) and it's fairly far away, so the increase checks out. Still, wrist servo aside, the pincer and its servos aren't too bad. I'd wager that at a bigger scale with more space, there is a better solution to this that can make the assembly even lighter.
+The majority of the increase comes just from the wrist servo. MoI depends on the square of the distance from the axis around which you measure it, hence why the femur assembly, with its center of mass close to the axis, is not that rotationally heavy. The wrist servo is about 15 g (a fair amount of weight at this scale) and it's fairly far away, so the increase checks out. Still, wrist servo aside, the pincer and its servos aren't too bad. I'd wager that at a bigger scale with more space, there is a better solution to this that can make the assembly even lighter.
 
 Another thing to note is the price. At $7.50 per micro servo, the electronics for a single pincer come out at $22.50, while an extra arm and gripper would need 3 Gobildas + 4 micro servos, or $126 at the time of writing. The added masses come out at 54 g and 290 g respectively. Overall, an arm would be about 5x more expensive and 5x heavier than a pincer. 
 
